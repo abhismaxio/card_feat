@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Poppins:ital,wght@0,200;0,300;1,100;1,200&family=Roboto:ital,wght@0,300;1,100&display=swap" rel="stylesheet">
+    <style>
+        body{
+            font-family: 'Roboto', sans-serif;
+            background: #f6e6d9;
+        }
+        .first_container{
+            display:flex;
+            flex-direction: row;
+        }
+        
+        .carousel-container {
+            overflow: hidden;
+            width: 50%; /* Adjust the width as needed */
+            margin: 0;
+            padding: 0;
+        }
+
+        .carousel-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+           
+        }
+
+        .carousel-card {
+            flex: 0 0 auto;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            margin-right: 10px; /* Adjust the margin as needed */
+            margin: 0;
+            padding: 0;
+
+        }
+        .carousel-card img{
+            width: 50vw;
+            height: 100vh;
+        }
+
+        .first, .second, .third, .forth, .fifth {
+            cursor: pointer;
+            position: absolute;
+            transform: translateY(-50%);
+            font-size: 20px;
+            height: 60px;
+            width: 60px;
+            border-radius: 100%;
+            border: 2px solid white;
+            color: rgb(38, 127, 204);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .first { left: 30px; bottom: 260px; background:url("/img/1.jpg");background-size: contain; }
+        .second { left: 30px; bottom: 190px; background:url("/img/2.jpg");background-size: contain;}
+        .third { left: 30px; bottom: 120px; background:url("/img/3.jpg");background-size: contain;}
+        .forth { left: 30px; bottom: 50px; background:url("/img/4.jpg");background-size: contain;}
+        .fifth { left: 30px; bottom: -20px; background:url("/img/5.jpg");background-size: contain;}
+
+        .content{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px auto 0;
+            
+           
+        }
+        .container_content{
+            display: flex;
+            flex-direction: column;
+            width: 40vw;
+            margin: auto;
+            align-items: center;
+            
+        }
+        .container_content h1{
+            width: 100%; 
+            font-size: 320%;
+            font-weight: 300;
+            text-align: center;
+            margin: 10px;
+        }
+        .review{
+            font-size: 20px;
+            margin: 0 0 20px 0;
+        }
+        .sub_container_content{
+            background: #FFF4EC;
+            padding: 20px;
+            border: 1px solid black;
+            border-radius: 30px;
+            width: 30vw;
+        }
+        .sub_container_content p{
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .button_sets{
+            display:flex;
+            flex-direction: row;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+        }
+        .button_set{ 
+            display: flex;
+            flex-direction: column;
+            border: 1px solid black;
+            justify-items: center;
+            align-items: center;
+            width: 110%;
+            min-height: 110px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        .button_set:hover{
+            background: #f6e6d9;
+        }
+        .button_set h3 ,h2, p{
+            margin: 2px 0;
+        }
+
+        .button_set p{
+            font-size: 12px;
+            margin: 0px;
+            text-align: center;
+            width: 70%;
+        }
+       
+        .radio_line_1, .radio_line_2{
+            display: flex;
+            flex-direction: row;
+            gap:100px;
+            border-top: 1px dotted black;
+            font-size: large;
+            margin: 0;
+            padding: 0;
+            
+        }
+        .radio_line_1 p, .radio_line_2 p{
+            position: absolute;
+            width: 100px;
+            left: 84%;
+            
+        }
+        .radio{
+            display: flex;
+            padding: 10px 0px;
+
+        }
+        .radio label{
+            width: 200px;
+        }
+        input[type='radio'] {
+            height: 18px;
+            width: 20px;
+            cursor: pointer; 
+        }
+        .cut_price{
+            font-size: 16px;
+            color: #a7a7a7;
+            text-decoration:line-through;
+        }
+        .dropdown {
+           display: hidden;
+        }
+        .menu{
+            width: 100%;
+            height: 36px;
+            border-radius: 30px;
+            font-size: 18px;
+            margin: 15px auto ;
+            text-align: center;
+            background: #FFF4EC;
+            align-items: center;
+
+        }
+        .point_break{
+            width: 100%;
+            border: 1px dotted black;
+        }
+        .button{
+            width: 100%;
+            justify-self: center;
+            border-radius: 30px;
+            height: 39px;
+            font-size: 20px;
+            background: #D1E030;
+            box-shadow: 5px 2px 2px rgb(158, 157, 157);
+            margin: 10px 0;
+            cursor: pointer;
+        }
+        
+        
+        .description{
+            width: 90%;
+            margin: 100px 0 ;
+        }
+        .container_label{
+           
+            display: flex;
+            flex-direction: row;
+            gap:0;
+        }
+        .container_label p{
+            font-size: 24px;
+            height: 36px;
+            border: 1px solid #a7a7a7;
+            width: 33.333333%;
+            margin: 0;
+            padding-top: 6px ;
+            border-radius: 12px 12px 0 0;
+            cursor: pointer;
+        }
+        .container_desc{
+            border: 1px solid rgb(141, 140, 140);
+            border-radius: 0 0 13px 13px;
+            padding: 20px 0;
+            
+            
+        }
+        .container_desc h3, .container_desc p{
+            width: 90%;
+            margin: 5px auto;
+            text-align: left;
+            line-height: 1.5;
+            font-weight: 100;
+        }
+        .center_para{
+            text-align: center;
+        }
+        
+        .flex_column{
+            display: flex;
+            flex-direction: column;
+        }
+        .chg_para{
+            font-weight: 600;
+        }
+        @media only screen and (max-width: 1150px) {
+            .first_container{
+                flex-direction: column;
+            }
+            .carousel-container {
+                overflow: hidden;
+                width: 100%; /* Adjust the width as needed */
+                margin: 0;
+                padding: 0;
+            }
+            .carousel-card img{
+                width: 100vw;
+                height: 100vh;
+            }
+            .container_content{
+                width: 70%;
+            }
+            .sub_container_content{
+                width: 100%;
+            }
+            .radio_line_1 p, .radio_line_2 p{
+                
+                left: 75%;
+                
+            }
+            .description{
+                width: 100%;
+            }
+          }
+        
+          @media only screen and (max-width: 680px) {
+            
+            .container_content{
+                width: 90%;
+            }
+            .container_content h1{
+                font-size: 38px;
+            }
+            .container_label p{
+                font-size: 20px;
+            }
+          }
+    </style>
+    <title>Simple Carousel</title>
+</head>
+<body>
+    <div class="first_container">
+        <div class="carousel-container">
+            <div class="carousel-wrapper" id="carouselWrapper">
+                <div class="carousel-card"><img src="/img/1.jpg" alt=""></div>
+                <div class="carousel-card"><img src="/img/2.jpg" alt=""></div>
+                <div class="carousel-card"><img src="/img/3.jpg" alt=""></div>
+                <div class="carousel-card"><img src="/img/4.jpg" alt=""></div>
+                <div class="carousel-card"><img src="/img/5.jpg" alt=""></div>
+                <!-- Add more cards as needed -->
+            </div>
+            <div class="first" onclick="firstSlide()"></div>
+            <div class="second" onclick="secondSlide()"></div>
+            <div class="third" onclick="thirdSlide()"></div>
+            <div class="forth" onclick="forthSlide()"></div>
+            <div class="fifth" onclick="fifthSlide()"></div>
+        </div>
+
+        <!-- right container -->
+        <div class="content">
+            <div class="container_content">
+                <h1 class="flex_column" ><span>“Drizzle” & “Sizzle”</span> <span style="text-decoration: 2px underline;">Extra Virgin Olive Oil</span> </h1>
+                <p class="review">★★★★★<span> 984 Reviews</span> </p>
+
+
+
+                <div class="sub_container_content">            
+                    <p style="margin-left: 10px;">Quantity</p>
+
+
+
+                    <div class="button_sets">
+                        <div class="button_set" id="button_set1" onclick="set1()">
+                            <h2>1</h2>
+                            <h3>Set</h3>
+                            <p>+10% off</p>
+                        </div>
+                        <div class="button_set" id="button_set2" onclick="set2()">
+                            <h2>2</h2>
+                            <h3>Sets</h3>
+                            <p>Free Shipping +14% off</p>
+                        </div>
+                        <div class="button_set" id="button_set3" onclick="set3()">
+                            <h2>3</h2>
+                            <h3>Sets</h3>
+                            <p>Free Shipping +17% off</p>
+                        </div>
+                        <div class="button_set" id="button_set4" onclick="set4()">
+                            <h2>4</h2>
+                            <h3>Sets</h3>
+                            <p>Free Shipping +19% off</p>
+                        </div>
+                    </div>
+
+
+                     <!-- radio button -->
+                        <div class="radio_line_1">
+                            <div class="radio">
+                                <input type="radio" id="1st" name="fav_language" value="1st" onclick="toggleDropdown(false) , changeButtonText('Add To Cart')" >
+                                <label for="1st">One Time Purchase</label><br>
+                            </div>
+                            <p ><span class="cut_price" id="cut_price_1">$37</span> <span id="final_price_1" style="margin-left:10%;"> $36</span> </p> 
+                        </div>
+        
+                        <div class="radio_line_2">
+                            <div class="radio">
+                                <input type="radio" id="2nd" name="fav_language" value="2nd" onclick="toggleDropdown(true) , changeButtonText('Subscribe')">
+                                <label for="2nd">Subscribe and Save</label><br>
+                            </div>
+                            <p ><span class="cut_price" id="cut_price_2">$37</span><span id="final_price_2" style="margin-left:10%;"> $33</span>  </p>
+                        </div>
+
+
+                        
+
+                    
+                        <div class="dropdown" id="dropdownContainer" >
+                            <select class="menu" name="freq" id="dropdown" for="dropdown">
+                                <option value="freq1"> Every 1 Month  </option>
+                                <option value="freq2">Every 2 month </option>
+                                <option value="freq3">Every 3 month </option>
+                            </select>
+                        </div>
+                    
+                    <div class="point_break"></div>
+  
+                    <Button id="button" class="button"> Add To Cart</Button>
+                    
+                    <p class="center_para chg_para" id="container_para_chg">*HEADS UP! MULTIPLE SETS OF DRIZZLE & SIZZLE SHIP IN THE SAME BOX! TO ORDER INDIVIDUALLY PACKAGED GIFT SETS, CLICK HERE! 🎁</p>
+                    
+                </div>
+
+
+                <div class="description">
+                    <div class="container_label" >
+                        <p class="center_para" id="para_desc" onclick="desc()">Description</p>
+                        <p class="center_para" id="para_har" onclick="har()">Harvest</p>
+                        <p class="center_para" id="para_use" onclick="use()">usecases</p>
+                    </div>
+                    <div class="container_desc">
+                        <h3>DRIZZLE: </h3>
+                        <p id="desc_1st">Extra Virgin finishing oil made from olives that are picked early, when flavor is bold and antioxidants are highest. Made for eating, never heating.</p>
+                        <br>
+                        <h3>SIZZLE:</h3>
+                        <p id="desc_2nd">Extra Virgin cooking oil made from mature, mid-season olives that yield a more mellow flavor. Use it every day, in every way.</p>
+                    </div>
+                    
+                </div>
+
+
+            </div>
+        
+        </div>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <script>
+        //for carasoul
+
+        const wrapper = document.getElementById('carouselWrapper');
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            const itemWidth = document.querySelector('.carousel-card').offsetWidth;
+            const newPosition = -index * itemWidth;
+            wrapper.style.transform = `translateX(${newPosition}px)`;
+        }
+
+        function firstSlide() {
+            current = (currentIndex ) % wrapper.children.length;
+            showSlide(current);
+        }
+
+        function secondSlide() {
+            currentI = (currentIndex + 1 + wrapper.children.length) % wrapper.children.length;
+            showSlide(currentI);
+        }
+        function thirdSlide() {
+            currentI = (currentIndex + 2 + wrapper.children.length) % wrapper.children.length;
+            showSlide(currentI);
+        }
+        function forthSlide() {
+            currentI = (currentIndex + 3 + wrapper.children.length) % wrapper.children.length;
+            showSlide(currentI);
+        }
+        function fifthSlide() {
+            currentI = (currentIndex + 4 + wrapper.children.length) % wrapper.children.length;
+            showSlide(currentI);
+        }
+
+       // for drop down menu
+
+        function toggleDropdown(show) {
+            var dropdownContainer = document.getElementById('dropdownContainer');
+      
+            if (show) {
+              dropdownContainer.style.display = 'block';
+              document.getElementById("container_para_chg").textContent="Skip or Cancel Anytime";
+              
+            } else {
+              dropdownContainer.style.display = 'none';
+              document.getElementById("container_para_chg").textContent="*HEADS UP! MULTIPLE SETS OF DRIZZLE & SIZZLE SHIP IN THE SAME BOX! TO ORDER INDIVIDUALLY PACKAGED GIFT SETS, CLICK HERE! 🎁";
+
+            }
+            
+          }
+
+
+        function set1(){
+            document.getElementById("button_set1").style.background = "#9EEF80";
+            document.getElementById("button_set2").style.background = "unset";
+            document.getElementById("button_set3").style.background = "unset";
+            document.getElementById("button_set4").style.background = "unset";
+            document.getElementById("cut_price_1").textContent="$37";
+            document.getElementById("final_price_1").textContent="$36";
+            document.getElementById("cut_price_2").textContent="$37";
+            document.getElementById("final_price_2").textContent="$33";
+        }
+        function set2(){
+            document.getElementById("button_set2").style.background = "#9EEF80";
+            document.getElementById("button_set1").style.background = "unset";
+            document.getElementById("button_set3").style.background = "unset";
+            document.getElementById("button_set4").style.background = "unset";
+            document.getElementById("cut_price_1").textContent="$74";
+            document.getElementById("final_price_1").textContent="$69";
+            document.getElementById("cut_price_2").textContent="$74";
+            document.getElementById("final_price_2").textContent="$64";
+        }
+        function set3(){
+            document.getElementById("button_set3").style.background = "#9EEF80";
+            document.getElementById("button_set1").style.background = "unset";
+            document.getElementById("button_set2").style.background = "unset";
+            document.getElementById("button_set4").style.background = "unset";
+            document.getElementById("cut_price_1").textContent="$111";
+            document.getElementById("final_price_1").textContent="$102";
+            document.getElementById("cut_price_2").textContent="$111";
+            document.getElementById("final_price_2").textContent="$94";
+        }
+        function set4(){
+            document.getElementById("button_set4").style.background = "#9EEF80";
+            document.getElementById("button_set1").style.background = "unset";
+            document.getElementById("button_set2").style.background = "unset";
+            document.getElementById("button_set3").style.background = "unset";
+            document.getElementById("cut_price_1").textContent="$222";
+            document.getElementById("final_price_1").textContent="$199";
+            document.getElementById("cut_price_2").textContent="$222";
+            document.getElementById("final_price_2").textContent="$185";
+        }
+
+
+          // desxription box
+        function changeButtonText(newText) {
+            document.getElementById("button").textContent = newText;
+        }
+        function desc(){
+            document.getElementById("desc_1st").textContent = "Extra Virgin finishing oil made from olives that are picked early, when flavor is bold and antioxidants are highest. Made for eating, never heating.";
+            document.getElementById("desc_2nd").textContent = "Extra Virgin cooking oil made from mature, mid-season olives that yield a more mellow flavor. Use it every day, in every way.";
+            document.getElementById("para_desc").style.background="black";
+            document.getElementById("para_desc").style.color="white";
+            
+            document.getElementById("para_use").style.background="unset";
+            document.getElementById("para_use").style.color="unset";
+            document.getElementById("para_har").style.background="unset";
+            document.getElementById("para_har").style.color="unset";
+
+
+        }
+        function har(){
+            document.getElementById("desc_1st").textContent = "Harvested in October, before the olives have ripened fully. Picked by hand because young olives need a firm yank to loosen up.";
+            document.getElementById("desc_2nd").textContent = "Harvested in November and December, when the olives are more mature. They’re pretty laid back by this point, so it only takes a few shakes to get them off the branch.";
+            document.getElementById("para_har").style.background="black";
+            document.getElementById("para_har").style.color="white";
+
+            document.getElementById("para_use").style.background="unset";
+            document.getElementById("para_use").style.color="unset";
+            document.getElementById("para_desc").style.background="unset";
+            document.getElementById("para_desc").style.color="unset";
+        }
+        function use(){
+            document.getElementById("desc_1st").textContent = "A little Drizzle goes a long way! Use it on and around things like ice cream, pesto, popcorn, salads, sandwiches or even directly on your tongue (we won’t tell).";
+            document.getElementById("desc_2nd").textContent = "If you would put it in or on top of an oven, use sizzle. Chicken Cutlets, Sheet Pan Veggies, Fried Rice, or even Chocolate Chip Cookies! You name it, Sizzle sizzles it.";
+            document.getElementById("para_use").style.background="black";
+            document.getElementById("para_use").style.color="white";
+
+            document.getElementById("para_desc").style.background="unset";
+            document.getElementById("para_desc").style.color="unset";
+            document.getElementById("para_har").style.background="unset";
+            document.getElementById("para_har").style.color="unset";
+        }
+
+    </script>
+</body>
+</html>
